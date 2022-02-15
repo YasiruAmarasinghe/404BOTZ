@@ -178,7 +178,7 @@ conn.send3ButtonImg(m.chat, thumb, `Hi! Im ${conn.user.name}\n\nHere my menu...`
 }
 handler.help = ['menu', 'help', '?','panel']
 handler.tags = ['main']
-handler.command = /^(menu|help|\?|panel)$/i
+handler.command = /^(menu|help|\?)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
