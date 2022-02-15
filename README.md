@@ -5,7 +5,7 @@
 <h1 align="center">404BOT™</h1>
 <h4>How to deploy</h4>
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/YasiruAmarasinghe/404Bot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/YasiruAmarasinghe/404BOTZ)
 
 
 #### Heroku Buildpack
