@@ -1,5 +1,5 @@
 {
-  "name": "Wizard-Ser",
+  "name": "404bot",
   "version": "1.1.2",
   "description": "WhatsApp Bot",
   "main": "index.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Ajmal-Achu/Wizard-Ser.git"
+    "url": "git+https://github.com/YasiruAmarasinghe/404BOTZ.git"
   },
   "keywords": [
     "whatsapp-bot"
@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/Ajmal-Achu/Wizard-Ser/issues"
   },
-  "homepage": "https://github.com/Ajmal-Achu/Wizard-Ser",
+  "homepage": "https://github.com/YasiruAmarasinghe/404BOTZ",
   "dependencies": {
     "@adiwajshing/baileys": "^3.5.2",
     "awesome-phonenumber": "^2.54.0",
