@@ -1,59 +1,7 @@
 let fs = require('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
-let tags = {
-  'main': 'Main',
-  'game': 'Game',
-  'xp': 'Exp & Limit',
-  'sticker': 'Sticker',
-  'kerang': 'Kerang Ajaib',
-  'quotes': 'Quotes',
-  'admin': 'Admin',
-  'group': 'Group',
-  'premium': 'Premium',
-  'internet': 'Internet',
-  'anonymous': 'Anonymous Chat',
-  'nulis': 'MagerNulis & Logo',
-  'downloader': 'Downloader',
-  'tools': 'Tools',
-  'fun': 'Fun',
-  'database': 'Database',
-  'vote': 'Voting',
-  'absen': 'Absen',
-  'quran': 'Al Qur\'an',
-  'jadibot': 'Jadi Bot',
-  'owner': 'Owner',
-  'host': 'Host',
-  'advanced': 'Advanced',
-  'info': 'Info',
-  '': 'No Category',
-}
-const defaultMenu = {
-  before: `
-╭─「 %me 」
-│ Hai, %name!
-│
-│ Tersisa *%limit Limit*
-│ Role *%role*
-│ Level *%level (%exp / %maxexp)* [%xp4levelup lagi untuk levelup]
-│ %totalexp XP in Total
-│ 
-│ Tanggal: *%week %weton, %date*
-│ Tanggal Islam: *%dateIslamic*
-│ Waktu: *%time*
-│
-│ Uptime: *%uptime (%muptime)*
-│ Database: %rtotalreg of %totalreg
-│ Github:
-│ %github
-╰────
-%readmore`.trimStart(),
-  header: '╭─「 %category 」',
-  body: '│ • %cmd %islimit %isPremium',
-  footer: '╰────\n',
-  after: `
-*%npmname@^%version*
-${'```%npmdesc```'}
+let tags = { 'main': '🄼🄰🄸🄽', 'game': '🄶🄰🄼🄴', 'xp': '🄴🅇🄿 & 🄻🄸🄼🄸🅃', 'sticker': '🅂🅃🄸🄲🄺🄴🅁', 'quotes': '🅀🅄🄾🅃🄴🅂', 'admin': '🄰🄳🄼🄸🄽', 'group': '🄶🅁🄾🅄🄿', 'premium': '🄿🅁🄴🄼🄸🅄🄼', 'internet': '🄸🄽🅃🄴🅁🄽🄴🅃', 'anonymous': '🄰🄽🄾🄽🅈🄼🄾🅄🅂 🄲🄷🄰🅃', 'nulis': '🄼🄰🄶🄴🅁 🄽🅄🄻🄸🅂 & 🄻🄾🄶🄾', 'downloader': '🄳🄾🅆🄽🄻🄾🄰🄳🄴🅁', 'tools': '🅃🄾🄾🄻🅂', 'fun': '🄵🅄🄽', 'database': '🄳🄰🅃🄰🄱🄰🅂🄴', 'vote': '🅅🄾🅃🄸🄽🄶', 'jadibot': '🄹🄰🄳🄸 🄱🄾🅃', 'owner': '🄾🅆🄽🄴🅁', 'host': '🄷🄾🅂🅃', 'advanced': '🄰🄳🅅🄰🄽🄲🄴', 'info': '🄸🄽🄵🄾', 'textpro': '🅃🄴🅇🅃🄿🅁🄾', '': '🄽🄾 🄲🄰🅃🄴🄶🄾🅁🅈',}const defaultMenu = { before: ` *╭──「 %name |─**│**│✇ Library : Baileys**│✇ Language : Javascript**│✇ Database : MongoDB**│✇ Version : ^0.0.5**│✇ Dev :* @94705622162*│✇ Runtime : %runtime**│✇ Prefix : Multi Prefix**│✇ Date & Time :* %date %time*│✇ Day : %week**│✇ Date : %date**│✇ Time : %time**│✇ Level : %level**│✇ Role : %role**│✇ Database : %rtotalreg of %totalreg**│**╰─────────*%readmore`.trimStart(), header: '『%category』', body: '|•➜ %cmd %islimit %isPremium', footer: '└┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n', after: '© 404Bot™| 2021' `*%npmname@^%version*limit 🄻 premium 🄿${'```%npmdesc```'}
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p }) => {
@@ -152,7 +100,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    conn.reply(m.chat, text.trim(), m)
+    await conn.send2ButtonLoc(m.chat, await (await fetch("https://github.com/YasiruAmarasinghe/404BOTZ/blob/main/src/404bot.jpg")).buffer(), text.trim(),watermark, 'Owner Bot', ',owner', 'BOT STATS', '.botstatus', m)
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
@@ -160,7 +108,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 }
 handler.help = ['menu', 'help', '?']
 handler.tags = ['main']
-handler.command = /^(menu|help|\?)$/i
+handler.command = /^(menu|help|\?|panel)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
