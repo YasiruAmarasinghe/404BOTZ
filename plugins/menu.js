@@ -169,7 +169,6 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
         }
     }
 }
-let fkon = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: '94705622162@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `404Dev`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN: Unaux \nitem1.TEL;waid=94741934049:94705622162\nitem1.X-ABLabel:Yasi\nEND:VCARD`}}}
 conn.send3ButtonImg(m.chat, thumb, `Hi! Im ${conn.user.name}\n\nHere my menu...`, text.trim(), 'PING', '.ping', 'OWNER', '.owner', 'Bot-Status', '.botstatus', reply)
   } catch (e) {
     conn.reply(m.chat, 'Menu sending error', m)
