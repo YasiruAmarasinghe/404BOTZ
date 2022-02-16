@@ -1,6 +1,7 @@
 let fs = require('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
+const thumb = fs.readFileSync('../src/404bot.jpg')
 let tags = {
   'main': '🄼🄰🄸🄽',
   'game': '🄶🄰🄼🄴',
