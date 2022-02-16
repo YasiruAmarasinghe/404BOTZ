@@ -2,41 +2,37 @@ let fs = require('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
 let tags = {
-  'main': 'Main',
-  'rpg': 'Epic RPG',
-  'game': 'Game',
-  'xp': 'Exp & Limit',
-  'sticker': 'Sticker',
-  'kerang': 'Kerang Ajaib',
-  'quotes': 'Quotes',
-  'admin': 'Admin',
-  'group': 'Group',
-  'premium': 'Premium',
-  'internet': 'Internet',
-  'anonymous': 'Anonymous Chat',
-  'nulis': 'MagerNulis & Logo',
-  'downloader': 'Downloader',
-  'tools': 'Tools',
-  'fun': 'Fun',
-  'database': 'Database',
-  'vote': 'Voting',
-  'absen': 'Absen',
-  'quran': 'Al Qur\'an',
-  'jadibot': 'Jadi Bot',
-  'owner': 'Owner',
-  'host': 'Host',
-  'advanced': 'Advanced',
-  'info': 'Info',
-  '': 'No Category',
+  'main': '🄼🄰🄸🄽',
+  'game': '🄶🄰🄼🄴',
+  'xp': '🄴🅇🄿 & 🄻🄸🄼🄸🅃',
+  'sticker': '🅂🅃🄸🄲🄺🄴🅁',
+  'quotes': '🅀🅄🄾🅃🄴🅂',
+  'admin': '🄰🄳🄼🄸🄽',
+  'group': '🄶🅁🄾🅄🄿',
+  'premium': '🄿🅁🄴🄼🄸🅄🄼',
+  'internet': '🄸🄽🅃🄴🅁🄽🄴🅃',
+  'anonymous': '🄰🄽🄾🄽🅈🄼🄾🅄🅂 🄲🄷🄰🅃',
+  'nulis': '🄼🄰🄶🄴🅁 🄽🅄🄻🄸🅂 & 🄻🄾🄶🄾',
+  'downloader': '🄳🄾🅆🄽🄻🄾🄰🄳🄴🅁',
+  'tools': '🅃🄾🄾🄻🅂',
+  'fun': '🄵🅄🄽',
+  'database': '🄳🄰🅃🄰🄱🄰🅂🄴',
+  'vote': '🅅🄾🅃🄸🄽🄶',
+  'jadibot': '🄹🄰🄳🄸 🄱🄾🅃',
+  'owner': '🄾🅆🄽🄴🅁',
+  'host': '🄷🄾🅂🅃',
+  'advanced': '🄰🄳🅅🄰🄽🄲🄴',
+  'info': '🄸🄽🄵🄾',
+  'textpro': '🅃🄴🅇🅃🄿🅁🄾', 
+  '': '🄽🄾 🄲🄰🅃🄴🄶🄾🅁🅈',
 }
 const defaultMenu = {
   before: `
 ╭─「 %me 」
 │ %ucapan, %name!
 │
-│ Tanggal: *%week %weton, %date*
-│ Tanggal Islam: *%dateIslamic*
-│ Waktu: *%time*
+│ Date: *%week %weton, %date*
+│ Time: *%time*
 │
 │ Uptime: *%uptime (%muptime)*
 │ Database: %rtotalreg of %totalreg
@@ -143,10 +139,9 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    let pp = await conn.getProfilePicture(conn.user.jid).catch(_ => path.join(__dirname, '../src/avatar_contact.png'))
-    conn.sendFile(m.chat, pp, 'menu.jpg', text.trim(), m).catch(_ => conn.reply(m.chat, text.trim(), m))
+    conn.sendFile(m.chat, thumb, 'menu.jpg', text.trim(), m).catch(_ => conn.reply(m.chat, text.trim(), m))
   } catch (e) {
-    conn.reply(m.chat, 'Maaf, menu sedang error', m)
+    conn.reply(m.chat, 'Soory, menu sending error', m)
     throw e
   }
 }
