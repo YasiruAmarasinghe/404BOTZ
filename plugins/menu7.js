@@ -1,7 +1,50 @@
 let fs = require('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
-let tags = { 'main': '🄼🄰🄸🄽', 'game': '🄶🄰🄼🄴', 'xp': '🄴🅇🄿 & 🄻🄸🄼🄸🅃', 'sticker': '🅂🅃🄸🄲🄺🄴🅁', 'quotes': '🅀🅄🄾🅃🄴🅂', 'admin': '🄰🄳🄼🄸🄽', 'group': '🄶🅁🄾🅄🄿', 'premium': '🄿🅁🄴🄼🄸🅄🄼', 'internet': '🄸🄽🅃🄴🅁🄽🄴🅃', 'anonymous': '🄰🄽🄾🄽🅈🄼🄾🅄🅂 🄲🄷🄰🅃', 'nulis': '🄼🄰🄶🄴🅁 🄽🅄🄻🄸🅂 & 🄻🄾🄶🄾', 'downloader': '🄳🄾🅆🄽🄻🄾🄰🄳🄴🅁', 'tools': '🅃🄾🄾🄻🅂', 'fun': '🄵🅄🄽', 'database': '🄳🄰🅃🄰🄱🄰🅂🄴', 'vote': '🅅🄾🅃🄸🄽🄶', 'jadibot': '🄹🄰🄳🄸 🄱🄾🅃', 'owner': '🄾🅆🄽🄴🅁', 'host': '🄷🄾🅂🅃', 'advanced': '🄰🄳🅅🄰🄽🄲🄴', 'info': '🄸🄽🄵🄾', 'textpro': '🅃🄴🅇🅃🄿🅁🄾', '': '🄽🄾 🄲🄰🅃🄴🄶🄾🅁🅈',}const defaultMenu = { before: ` *╭──「 %name |─**│**│✇ Library : Baileys**│✇ Language : Javascript**│✇ Database : MongoDB**│✇ Version : ^0.0.5**│✇ Dev :* @94705622162*│✇ Runtime : %runtime**│✇ Prefix : Multi Prefix**│✇ Date & Time :* %date %time*│✇ Day : %week**│✇ Date : %date**│✇ Time : %time**│✇ Level : %level**│✇ Role : %role**│✇ Database : %rtotalreg of %totalreg**│**╰─────────*%readmore`.trimStart(), header: '『%category』', body: '|•➜ %cmd %islimit %isPremium', footer: '└┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n', after: '© 404Bot™| 2021' `*%npmname@^%version*limit 🄻 premium 🄿${'```%npmdesc```'}
+let tags = { 'main': '🄼🄰🄸🄽', 
+'game': '🄶🄰🄼🄴', 
+'xp': '🄴🅇🄿 & 🄻🄸🄼🄸🅃', 
+'sticker': '🅂🅃🄸🄲🄺🄴🅁',
+ 'quotes': '🅀🅄🄾🅃🄴🅂',
+ 'admin': '🄰🄳🄼🄸🄽',
+ 'group': '🄶🅁🄾🅄🄿',
+ 'premium': '🄿🅁🄴🄼🄸🅄🄼', 
+'internet': '🄸🄽🅃🄴🅁🄽🄴🅃', 
+'anonymous': '🄰🄽🄾🄽🅈🄼🄾🅄🅂 🄲🄷🄰🅃',
+ 'nulis': '🄼🄰🄶🄴🅁 🄽🅄🄻🄸🅂 & 🄻🄾🄶🄾', 
+'downloader': '🄳🄾🅆🄽🄻🄾🄰🄳🄴🅁',
+ 'tools': '🅃🄾🄾🄻🅂', 
+'fun': '🄵🅄🄽', 
+'database': '🄳🄰🅃🄰🄱🄰🅂🄴',
+'vote': '🅅🄾🅃🄸🄽🄶',
+ 'jadibot': '🄹🄰🄳🄸 🄱🄾🅃', 
+'owner': '🄾🅆🄽🄴🅁', 
+'host': '🄷🄾🅂🅃', 
+'advanced': '🄰🄳🅅🄰🄽🄲🄴', 
+'info': '🄸🄽🄵🄾', 
+'textpro': '🅃🄴🅇🅃🄿🅁🄾', 
+'': '🄽🄾 🄲🄰🅃🄴🄶🄾🅁🅈',}
+const defaultMenu = { before: ` *╭──「 %name |─*
+*│**│✇ Library : Baileys*
+*│✇ Language : Javascript*
+*│✇ Database : MongoDB*
+*│✇ Version : ^0.0.5*
+*│✇ Dev :* @94705622162*
+*│✇ Runtime : %runtime*
+*│✇ Prefix : Multi Prefix*
+*│✇ Date & Time :* %date %time
+*│✇ Day : %week*
+*│✇ Date : %date*
+*│✇ Time : %time*
+*│✇ Level : %level*
+*│✇ Role : %role*
+*│✇ Database : %rtotalreg of %totalreg*
+*│*
+*╰─────────*%readmore`.trimStart(), 
+header: '『%category』',
+ body: '|•➜ %cmd %islimit %isPremium',
+ footer: '└┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n',
+ after: '© 404Bot™| 2021' `*%npmname@^%version*limit 🄻 premium 🄿${'```%npmdesc```'}
 `,
 }
 let handler = async (m, { conn, usedPrefix: _p }) => {
@@ -100,8 +143,8 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    await conn.send2ButtonLoc(m.chat, await (await fetch("https://github.com/YasiruAmarasinghe/404BOTZ/blob/main/src/404bot.jpg")).buffer(), text.trim(),watermark, 'Owner Bot', ',owner', 'BOT STATS', '.botstatus', m)
-  } catch (e) {
+    conn.reply(m.chat, text.trim(), m)
+ } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
   }
