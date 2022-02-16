@@ -2,7 +2,7 @@ let fs = require('fs')
 let path = require('path')
 let fetch = require('node-fetch')
 let levelling = require('../lib/levelling')
-const thumb = fs.readFileSync('./src/404bot.jpg')
+const thumb = fs.readFileSync('../src/404bot.jpg')
 let tags = {
   'main': '🄼🄰🄸🄽',
   'game': '🄶🄰🄼🄴',
@@ -178,7 +178,7 @@ conn.send3ButtonImg(m.chat, thumb, `Hi! Im ${conn.user.name}\n\nHere my menu...`
 }
 handler.help = ['menu', 'help', '?','panel']
 handler.tags = ['main']
-handler.command = /^(menu|help|\?)$/i
+handler.command = /^(menu|help|\?|panel)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
