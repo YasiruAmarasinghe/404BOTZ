@@ -2,24 +2,26 @@ let fs = require('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
 let tags = {
-  'main': '*Main*',
-  'game': '*Game*',
-  'xp': '*Exp & Limit*',
-  'sticker': '*Sticker*,
-  'admin': '*Admin*',
-  'group': '*Group*',
-  'internet': '*Internet*',
-  'nulis': '*MagerNulis & Logo*',
-  'downloader': '*Downloader*',
-  'tools': '*Tools*',
-  'fun': '*Fun*',
-  'database': '*Database*',
-  'vote': '*Voting*',
-  'jadibot': '*Jadi Bot*',
-  'owner': '*Owner*',
-  'host': '*Host*',
-  'advanced': '*Advanced*',
-  'info': '*Info*',
+  'main': ' *Main* ',
+  'game': ' *Game* ',
+  'xp': ' *Exp & Limit* ',
+  'sticker': ' *Sticker* ,
+  'admin': ' *Admin* ',
+  'group': ' *Group* ',
+  'internet': ' *Internet* ',
+  'nulis': ' *MagerNulis & Logo* ',
+  'downloader': ' *Downloader* ',
+  'tools': ' *Tools* ',
+  'fun': ' *Fun* ',
+  'database': ' *Database* ',
+  'vote': ' *Voting* ',
+  'jadibot': ' *Jadi Bot* ',
+  'owner': ' *Owner* ',
+  'host': ' *Host* ',
+  'advanced': ' *Advanced* ',
+  'info': ' *Info* ',
+  'audio':' *Audio* ' 
+   'textpro': ' *Textpro* '
   '': 'No Category',
 }
 const defaultMenu = {
@@ -152,13 +154,13 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   ['Owner',  '/owner']
 ], { quoted: m}).catch(_ => conn.sendFile(m.chat, pp, 'menu.jpg', text.trim(), m)).catch(_ => conn.reply(m.chat, text.trim(), m))
   } catch (e) {
-    conn.reply(m.chat, 'Maaf, menu sedang Diperbaiki', m)
+    conn.reply(m.chat, 'Sorry, menu sending error ', m)
     throw e
   }
 }
 handler.help = ['menu', 'help', '?']
 handler.tags = ['main']
-handler.command = /^(panel|menu|help|\?)$/i
+handler.command = /^(menu|help|\?)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
