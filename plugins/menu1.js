@@ -2,58 +2,47 @@ let fs = require('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
 let tags = {
-  'main': 'Main',
-  'game': 'Game',
-  'xp': 'Exp & Limit',
-  'sticker': 'Sticker',
-  'kerang': 'Kerang Ajaib',
-  'quotes': 'Quotes',
-  'admin': 'Admin',
-  'group': 'Group',
-  'premium': 'Premium',
-  'internet': 'Internet',
-  'apkmod': 'Apk Mod',
-  'dewasa' : 'Dewasa',
-  'anonymous': 'Anonymous Chat',
-  'nulis': 'MagerNulis & Logo',
-  'downloader': 'Downloader',
-  'tools': 'Tools',
-  'fun': 'Fun',
-  'database': 'Database',
-  'vote': 'Voting',
-  'absen': 'Absen',
-  'quran': 'Al Qur\'an',
-  'jadibot': 'Jadi Bot',
-  'akungratis': 'Akun Free',
-  'owner': 'Owner',
-  'host': 'Host',
-  'advanced': 'Advanced',
-  'info': 'Info',
+  'main': '*Main*',
+  'game': '*Game*',
+  'xp': '*Exp & Limit*',
+  'sticker': '*Sticker*,
+  'admin': '*Admin*',
+  'group': '*Group*',
+  'internet': '*Internet*',
+  'nulis': '*MagerNulis & Logo*',
+  'downloader': '*Downloader*',
+  'tools': '*Tools*',
+  'fun': '*Fun*',
+  'database': '*Database*',
+  'vote': '*Voting*',
+  'jadibot': '*Jadi Bot*',
+  'owner': '*Owner*',
+  'host': '*Host*',
+  'advanced': '*Advanced*',
+  'info': '*Info*',
   '': 'No Category',
 }
 const defaultMenu = {
   before: `
 ╭─回「 %me 」
-├❥ Hai, %name!
+├| Hi, %name!
 │
-├❥ Tersisa *%limit Limit*
-├❥ Role *%role*
-├❥ Level *%level (%exp / %maxexp)* [%xp4levelup lagi untuk levelup]
+├| Limit *%limit Limit*
+├| Role *%role*
+├| Level *%level (%exp / %maxexp)* [%xp4levelup lagi untuk levelup]
 │
-├❥ %totalexp XP in Total
+├| %totalexp XP in Total
 │ 
-├❥ Tanggal: *%week %weton, %date*
-├❥ Tanggal Islam: *%dateIslamic*
-├❥ Waktu: *%time*
+├| Time: *%time*
 │
-├❥ Uptime: *%uptime (%muptime)*
-├❥ Database: %rtotalreg of %totalreg
-├❥ Github:
-├❥ %github
+├| Uptime: *%uptime (%muptime)*
+├| Database: %rtotalreg of %totalreg
+├| Github:
+├| %github
 ╰────────────────
 %readmore`.trimStart(),
   header: '╭─回「 %category 」',
-  body: '├❥ %cmd %islimit %isPremium',
+  body: '├|• %cmd %islimit %isPremium',
   footer: '╰────\n',
   after: `
 *%npmname@^%version*
@@ -169,7 +158,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
 }
 handler.help = ['menu', 'help', '?']
 handler.tags = ['main']
-handler.command = /^(menu|help|\?)$/i
+handler.command = /^(panel|menu|help|\?)$/i
 handler.owner = false
 handler.mods = false
 handler.premium = false
