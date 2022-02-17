@@ -16,6 +16,5 @@ let handler = async (m, { conn, args, usedPrefix, command, text }) => {
 handler.help = ['wallpaperq <pencarian>']
 handler.tags = ['internet']
 handler.command = /^wall(paper)?q?$/i
-handler.limit = true
 
 module.exports = handler
