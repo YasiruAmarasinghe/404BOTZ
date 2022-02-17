@@ -9,6 +9,5 @@ handler.help = ['snackvideo'].map(v => v + ' <url>')
 handler.tags = ['downloader']
 
 handler.command = /^snackvideo$/i
-handler.limit = true
 
 module.exports = handler
