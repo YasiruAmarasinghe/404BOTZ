@@ -21,7 +21,7 @@ let handler = async (m, { conn, text }) => {
 }
 handler.help = ['sfire']
 handler.tags = ['sticker']
-handler.limit = 1
+handler.limit = false
 handler.command = /^sfire$/i
 handler.owner = false
 handler.mods = false
