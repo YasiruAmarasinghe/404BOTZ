@@ -28,8 +28,6 @@ handler.help = ['stikerline <url>']
 handler.tags = ['sticker']
 handler.command = /^(stic?kerline)$/i
 
-handler.limit = true
-
 module.exports = handler
 
 const delay = time => new Promise(res => setTimeout(res, time))
