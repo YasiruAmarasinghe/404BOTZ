@@ -24,6 +24,5 @@ let handler = async (m, { conn }) => {
 handler.help = ['tbc @<user>']
 handler.tags = ['internet']
 handler.command = /^(tobecontinue|tbc)$/i
-handler.limit = true
 
 module.exports = handler
