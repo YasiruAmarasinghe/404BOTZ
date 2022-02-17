@@ -150,7 +150,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
   ['Ping',  '/ping'],
   ['Info',  '/info'],
   ['Owner',  '/owner']
-], { quoted: m}).catch(_ => conn.sendFile(m.chat, pp, 'menu.jpg', text.trim(), m)).catch(_ => conn.reply(m.chat, text.trim(), m))
+], { quoted: m}).catch(_ => conn.sendFile(m.chat, pp, 'menu.jpg',text.trim(), m)).catch(_ => conn.reply(m.chat, text.trim(), m))
   } catch (e) {
     conn.reply(m.chat, 'soory menu sending error', m)
     throw e
