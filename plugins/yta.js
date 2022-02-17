@@ -1,4 +1,4 @@
-let limit = 30
+let limit = 130
 const { servers, yta } = require('../lib/y2mate')
 let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) => {
   if (!args || !args[0]) throw `Example:\n${usedPrefix + command} https://www.youtube.com/watch?v=yxDdj_G9uRY`
@@ -11,7 +11,7 @@ let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) =
 *Title:* ${title}
 *File size:* ${filesizeF}
 `.trim(), m, null, {
-    asDocument: true, mimetype: 'audio/mp4' //blOK salah satu jika ingin audio ke dokumen
+    asDocument: true, mimetype: 'audio/mp3' //blOK salah satu jika ingin audio ke dokumen
     //asDocument: chat.useDocument, mimetype: 'audio/mp4'
   })
 }
@@ -29,7 +29,6 @@ handler.botAdmin = false
 
 handler.fail = null
 handler.exp = 0
-handler.limit = true
 
 module.exports = handler
 
