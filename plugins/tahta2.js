@@ -39,6 +39,5 @@ let handler = async (m, { text, usedPrefix, command }) => {
 handler.help = ['tahta2'].map(v => v + ' <text>')
 handler.tags = ['tools']
 handler.command = /^((harta)?(tahta)?|ht)2$/i
-handler.limit = true
 module.exports = handler
 
