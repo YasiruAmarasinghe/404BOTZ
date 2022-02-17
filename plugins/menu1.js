@@ -2,52 +2,51 @@ let fs = require('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
 let tags = {
-  'main': ' Main ',
-  'game': ' Game',
-  'xp': ' Exp & Limit ',
-  'sticker': ' Sticker ,
-  'admin': ' Admin ',
-  'group': ' Group ',
-  'internet': ' Internet',
-  'nulis': ' MagerNulis & Logo ',
-  'downloader': ' Downloader ',
-  'tools': ' Tools ',
-  'fun': ' Fun ',
-  'database': ' Database ',
-  'vote': ' Voting ',
-  'jadibot': ' Jadi Bot',
-  'owner': ' Owner',
-  'host': ' Host ',
-  'advanced': ' Advanced ',
-  'info': ' Info ',
-  'audio':' Audio ', 
-   'textpro': ' Textpro ',
+  'main': 'Main',
+  'game': 'Game',
+  'xp': 'Exp & Limit',
+  'sticker': 'Sticker',
+  'admin': 'Admin',
+  'group': 'Group',
+  'premium': 'Premium',
+  'internet': 'Internet',
+  'nulis': 'MagerNulis & Logo',
+  'downloader': 'Downloader',
+  'tools': 'Tools',
+  'fun': 'Fun',
+  'database': 'Database',
+  'vote': 'Voting',
+  'jadibot': 'Jadi Bot',
+  'owner': 'Owner',
+  'host': 'Host',
+  'advanced': 'Advanced',
+  'info': 'Info',
   '': 'No Category',
 }
 const defaultMenu = {
   before: `
-╭─回「 %me 」
-├| Hi, %name!
+╭─◎□「 %me 」□◎
+├➹ Hi, %name!
 │
-├| Limit *%limit Limit*
-├| Role *%role*
-├| Level *%level (%exp / %maxexp)* [%xp4levelup lagi untuk levelup]
+├➹ Role *%role*
+├➹ Level *%level ░%exp / %maxexp░* [%xp4levelup lagi untuk levelup]
 │
-├| %totalexp XP in Total
+├➹ %totalexp XP in Total
 │ 
-├| Time: *%time*
+├➹ Time: *%time*
 │
-├| Uptime: *%uptime (%muptime)*
-├| Database: %rtotalreg of %totalreg
-├| Github:
-├| %github
+├➹ Uptime: *%uptime (%muptime)*
+├➹ Database: %rtotalreg of %totalreg
+├➹ Github:
+├➹ %github
 ╰────────────────
 %readmore`.trimStart(),
-  header: '╭─回「 %category 」',
-  body: '├|• %cmd %islimit %isPremium',
+  header: '╭─❖「 %category 」',
+  body: '├ | • %cmd %islimit %isPremium',
   footer: '╰────\n',
   after: `
 *%npmname@^%version*
+©YASIRU
 ${'```%npmdesc```'}
 `,
 }
@@ -120,8 +119,8 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
           ...help.filter(menu => menu.tags && menu.tags.includes(tag) && menu.help).map(menu => {
             return menu.help.map(help => {
               return body.replace(/%cmd/g, menu.prefix ? help : '%p' + help)
-                .replace(/%islimit/g, menu.limit ? '(Limit)' : '')
-                .replace(/%isPremium/g, menu.premium ? '(Premium)' : '')
+                .replace(/%islimit/g, menu.limit ? '🄻' : '')
+                .replace(/%isPremium/g, menu.premium ? '' 🄿: '')
                 .trim()
             }).join('\n')
           }),
@@ -148,13 +147,13 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     let pp = await conn.getProfilePicture(conn.user.jid).catch(_ => path.join(__dirname, '../src/avatar_contact.png'))
-    conn.sendButton(m.chat,text.trim(), author,  pp,  [
+    conn.send3ButtonImg(m.chat, text.trim(), author,  pp,  [
   ['Ping',  '/ping'],
   ['Info',  '/info'],
   ['Owner',  '/owner']
 ], { quoted: m}).catch(_ => conn.sendFile(m.chat, pp, 'menu.jpg', text.trim(), m)).catch(_ => conn.reply(m.chat, text.trim(), m))
   } catch (e) {
-    conn.reply(m.chat, 'Sorry, menu sending error ', m)
+    conn.reply(m.chat, 'soory menu sending error', m)
     throw e
   }
 }
