@@ -27,8 +27,6 @@ handler.help = ['stikerly <pencarian>']
 handler.tags = ['sticker']
 handler.command = /^(stic?kerly)$/i
 
-handler.limit = true
-
 module.exports = handler
 
 const delay = time => new Promise(res => setTimeout(res, time))
