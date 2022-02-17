@@ -1,4 +1,4 @@
-let limit = 30
+let limit = 120
 let fetch = require('node-fetch')
 const { servers, yt } = require('../lib/y2mate')
 
@@ -55,8 +55,6 @@ await itsu.relayWAMessage(itsu.prepareMessageFromContent(m.chat, {
 handler.help = ['ytdl ']
 handler.tags = ['downloader']
 handler.command = /^(ytdl|yt)$/i
-
-handler.limit = true
 
 module.exports = handler
 
