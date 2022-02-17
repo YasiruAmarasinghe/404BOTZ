@@ -20,6 +20,5 @@ let handler = async (m, { conn, text }) => {
 handler.help = ['ttpdark <teks>']
 handler.tags = ['sticker']
 handler.command = /^(ttpdark)$/i
-handler.limit = true
 //Made By Anshul
 module.exports = handler
