@@ -2,25 +2,25 @@ let fs = require('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
 let tags = {
-  'main': '🄼🄰🄸🄽',
-  'game': '🄶🄰🄼🄴',
-  'xp': '🄴🅇🄿',
-  'sticker': '🅂🅃🄸🄲🄺🄴🅁',
-  'admin': '🄰🄳🄼🄸🄽',
-  'group': '🄶🅁🄾🅄🄿'
-  'internet': '🄸🄽🅃🄴🅁🄽🄴🅃',
-  'nulis': '🄻🄾🄶🄾',
-  'downloader': '🄳🄾🅆🄽🄻🄾🄰🄳🄴🅁',
-  'tools': '🅃🄾🄾🄻🅂',
-  'fun': '🄵🅄🄽',
-  'database': '🄳🄰🅃🄰🄱🄰🅂🄴',
-  'vote': '🅅🄾🅃🄸🄽🄶',
-  'jadibot': '🄹🄰🄳🄸🄱🄾🅃',
-  'owner': '🄾🅆🄽🄴🅁',
-  'host': '🄷🄾🅂🅃',
-  'advanced': '🄰🄳🅅🄰🄽🄲🄴🄳',
-  'info': '🄸🄽🄵🄾',
-  '': '🄾🅃🄷🄴🅁🅂',
+  'main': 'Main',
+  'game': 'Game',
+  'xp': 'Exp',
+  'sticker': 'Sticker',
+  'admin': 'Admin',
+  'group': 'Group'
+  'internet': 'internet',
+  'nulis': 'logo',
+  'downloader': 'Downloader',
+  'tools': 'Tools',
+  'fun': 'Fun',
+  'database': 'Database',
+  'vote': 'Voting',
+  'jadibot': 'Jadibot',
+  'owner': 'Owner',
+  'host': 'Host',
+  'advanced': 'Advanced',
+  'info': 'Info',
+  '': 'Others',
 }
 const defaultMenu = {
   before: `
@@ -28,7 +28,7 @@ const defaultMenu = {
 ├➹ Hi, %name!
 │
 ├➹ Role *%role*
-├➹ Level *%level ░%exp / %maxexp░* [%xp4levelup lagi untuk levelup]
+├➹ Level *%level [%exp / %maxexp]*
 │
 ├➹ %totalexp XP in Total
 │ 
