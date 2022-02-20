@@ -3,7 +3,7 @@ let fetch = require('node-fetch')
 const { servers, ytv } = require('../lib/y2mate')
 
 let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) => {
-  if (!args || !args[0]) throw `Like this:\n${usedPrefix + command} <url>\n\nContoh:\n${usedPrefix + command} https://www.youtube.com/watch?v=yxDdj_G9uRY`
+  if (!args || !args[0]) throw `Like this:\n${usedPrefix + command} <url>\n\nexamaple:\n${usedPrefix + command} https://www.youtube.com/watch?v=yxDdj_G9uRY`
   let chat = db.data.chats[m.chat]
   let server = (args[1] || servers[0]).toLowerCase()
   try {
