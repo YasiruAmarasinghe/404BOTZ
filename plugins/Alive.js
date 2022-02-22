@@ -1,6 +1,8 @@
 let fetch = require ('node-fetch')
 let handler = async (m, { conn }) => {
-    await conn.send2ButtonLoc(m.chat, await (await fetch("https://telegra.ph/file/a7d41633656e531d6a0b7.jpg")).buffer(), '»»—>»»—----°°°⍟°°°----—««<—««\n\n❖--| • 404 Bot online now.\n• |--❖\n\n※ ✤ 👷Bot working as no errors. ✤\n\n*Type .panel to get my full commad list.*\n\n✇ 🏅Thank you for using 404bot🏅\n\n\n__________________________'  , '🏅menu🏅', '.menu', '🏅status🏅', '.botstatus')
+      await conn.send2ButtonLoc(m.chat, await (await fetch(image)).buffer(), `
+Hey there, 404Bot online now Type .menu to get my full command list \n\nGroup official bot forum:https://chat.whatsapp.com/IZcDaQwOYlR6cFLeol8uYd\nThankyou for using 404BOT™
+`.trim(), watermark, 'Menu', `.menu`, 'Owner', `.owner`)
 }
 handler.tags = ['main']
 handler.help = ['alive']
