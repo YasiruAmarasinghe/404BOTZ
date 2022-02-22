@@ -1,4 +1,4 @@
-let  limit  =  110
+let  limit  =  140
 const { servers, yta } = require('../lib/y2mate')
 
 let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) => {
@@ -12,7 +12,7 @@ let handler = async (m, { conn, args, isPrems, isOwner, usedPrefix, command }) =
 *Title:* ${ title }
 *File Size:* ${ filesizeF }
 `.trim(), m, null, {
-    asDocument: chat.useDocument, mimetype: 'audio/mp3'
+    asDocument: true , mimetype: 'audio/mp3'
   } )
 }
 handler.help = ['mp3', 'a'].map(v => 'yt' + v + ` <url> [server: ${servers.join(', ')}]`)
