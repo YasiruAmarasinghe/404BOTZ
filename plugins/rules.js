@@ -18,7 +18,7 @@ let handler = async(m, { conn }) => {
 `.trim()
   const button = {
         buttonText: 'CLICK HERE',
-        description: 'Yasiru|',
+        description: kontol + 'Yasiru|',
         sections:  [{title: "Click item", rows: [
         {title: 'Menu all', description: "All the bot commands", rowId:".?"},
         {title: 'clone bot', description: "Want to run this bot", rowId:".jadibot"},
