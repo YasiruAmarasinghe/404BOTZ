@@ -390,51 +390,25 @@ module.exports = {
           if (chat.welcome) {
             let groupMetadata = await this.groupMetadata(jid)
             for (let user of participants) {
-              // let pp = './            let pp = global.ppkosong
-            let ppgc = global.ppgc
-            try {
-              pp = await uploadImage(await (await fetch(await this.getProfilePicture(user))).buffer())
-              ppgc = await uploadImage(await (await fetch(await this.getProfilePicture(jid))).buffer())
+              // let pp = './src/avatar_contact.png'
+              let pp = 'https://telegra.ph/file/fd4230902e75d397d8667.jpg'
+              try {
+                pp = await uploadImage(await (await fetch(await this.getProfilePicture(user))).buffer())
               } catch (e) {
               } finally {
                 text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'welcome, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc) :
                   (chat.sBye || this.bye || conn.bye || 'See you later, @user!')).replace(/@user/g, '@' + user.split`@`[0])
-                     let wel = await new knights.Welcome()
-                .setUsername(this.getName(user))
-                .setGuildName(this.getName(jid))
-                .setGuildIcon(ppgc)
-                .setMemberCount(groupMetadata.participants.length)
-                .setAvatar(pp)
-                .setBackground("https://i.ibb.co/KhtRxwZ/dark.png")
-                .toAttachment()
-
-              let lea = await new knights.Goodbye()
-                .setUsername(this.getName(user))
-                .setGuildName(this.getName(jid))
-                .setGuildIcon(ppgc)
-                .setMemberCount(groupMetadata.participants.length)
-                .setAvatar(pp)
-                .setBackground("https://i.ibb.co/KhtRxwZ/dark.png")
-                .toAttachment()
-              this.sendButtonLoc(jid, action === 'add' ?wel.toBuffer() : lea.toBuffer(), text, watermark, 'Thanks🤩', null, {
-                contextInfo: {
-                  mentionedJid: [user]
-                }
-              })
+                let wel = `https://hardianto-chan.herokuapp.com/api/welcome4?profile=${pp}&name=${encodeURIComponent(this.getName(user))}`
+                let lea = `https://hardianto-chan.herokuapp.com/api/goodbye3?profile=${pp}&name=${encodeURIComponent(this.getName(user))}&bg=https://telegra.ph/file/c996b407dbb9af2308487.jpg&namegb=${encodeURIComponent(this.getName(jid))}&member=${encodeURIComponent(groupMetadata.participants.length)}`
+                this.sendFile(jid, action === 'add' ? wel : lea, 'pp.jpg', text, null, false, {
+                  thumbnail: await (await fetch(action === 'add' ? wel : lea)).buffer(),
+                  contextInfo: {
+                    mentionedJid: [user]
+                  }
+                })
+              }
             }
           }
-        }
-          break
-      case 'promote':
-        text = (chat.sPromote || this.spromote || conn.spromote || '@current user Admin')
-      case 'demote':
-        if (!text) text = (chat.sDemote || this.sdemote || conn.sdemote || '@the current user is not an admin')
-        text = text.replace('@user', '@' + participants[0].split`@`[0])
-        if (chat.detect) this.sendMessage(jid, text, MessageType.extendedText, {
-          contextInfo: {
-            mentionedJid: this.parseMention(text)
-          }
-        })
         break
     }
   },
