@@ -45,7 +45,7 @@ global.ttq = `Thanks to:
 •𝚄𝚗𝚊𝚞𝚡 𝚝𝚎𝚊𝚖`
 global.ppkosong = 'https://telegra.ph/file/22fd84e4a3244e1b17e4e.png'
 global.ppgc = 'https://telegra.ph/file/22fd84e4a3244e1b17e4e.png'
-//change the image
+global.image = 'https://telegra.ph/file/ff336fedb34ece70dafc2.jpg'  //change the image
 global.thumbfoto = 'https://telegra.ph/file/a7d41633656e531d6a0b7.jpg' //thumbnail foto tools
 global.yamete = 'https://telegra.ph/file/a7d41633656e531d6a0b7.jpg' //qr
 global.sumberurl = 'https'
