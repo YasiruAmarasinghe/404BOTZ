@@ -1,31 +1,25 @@
-let { MessageType } = require('@adiwajshing/baileys')
 let linkRegex = /chat.whatsapp.com\/([0-9A-Za-z]{20,24})/i
 
 let handler = async (m, { conn, text, usedPrefix }) => {
     let [_, code] = text.match(linkRegex) || []
     if (!code) throw 'Link wrong'
     let res = await conn.acceptInvite(code)
-    m.reply(`Succesfully joined group ${res.gid} *Using invitation link 🔗*`).then(() => {
-        var jumlahHari = 86400000 * 0.1
+    m.reply(`Succesful join grup ${res.gid}`).then(() => {
+        var jumlahHari = 86400000 * 0.5
         var now = new Date() * 1
-        if (now < global.db.data.chats[res.gid].expired) global.db.data.chats[res.gid].expired += jumlahHari
-        else global.db.data.chats[res.gid].expired = now + jumlahHari
+        if (now < global.DATABASE.data.chats[res.gid].expired) global.DATABASE.data.chats[res.gid].expired += jumlahHari
+        else global.DATABASE.data.chats[res.gid].expired = now + jumlahHari
     })
-       await conn.send2ButtonLoc(m.chat, await (await fetch("https://telegra.ph/file/a7d41633656e531d6a0b7.jpg")).buffer(), '\n❖--| • Hi, I am 404 Bot I working with cocommads\n\n*Type .menu to get my full commad list.*\n\n✇ 🏅Thank you for using 404bot🏅\n\n\n__________________________'  , '🏅🄼🄴🄽🅄🏅', '.menu', '🏅🅂🅃🄰🅃🅄🅂🏅', '.botstatus')
+    await conn.sendButton(res.gid, `
+*${conn.user.name}* I am whatsApp bot created using nodejs,  *${conn.user.name}*is invited by  @${m.sender.split`@`[0]}
+    
+Type *${usedPrefix}menu* To get command list `.trim(), watermark, 'Menu', `${usedPrefix}?`, { contextInfo: { mentionedJid: [m.sender] } })
 }
-    await conn.sendMessage(res.gid, `Hello,\n *${conn.user.name}* is WhatsApp ser bot built with Nodejs.Invited by @${m.sender.split`@`[0]}
-    Type *.menu* to get my command list. `, MessageType.text, { contextInfo: { externalAdReply :{
-       mediaUrl: ' ',
-       mediaType: 4,
-       title: 'Yasiru ×͜×',
-       body: 'Whatsapp Developer Bot',
-       thumbnailUrl: 'https://telegra.ph/file/a7d41633656e531d6a0b7.jpg',
-sourceUrl: 'https://wa.me/94705622162?text=Hi+I+am+using+%23404Bot%E2%84%A2'
-}}})
-}
-handler.help = ['request <linkgroup> ']
-handler.tags = ['main', 'update']
+handler.help = ['request <chat.whatsapp.com>']
+handler.tags = ['info']
+
 handler.command = /^request$/i
 
+handler.premium = false
 
 module.exports = handler
