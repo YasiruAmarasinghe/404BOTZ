@@ -4,7 +4,7 @@ let handler = async function (m, { conn }) {
     let name = db.data.users[i] ? db.data.users[i].name : conn.getName(i)
     list.push({
       "displayName": 'Yasiru ❄',
-      "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:;${name};;;\nFN:${name}\nitem1.TEL;waid=${i.split('@')[0]}:${i.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+      "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:;${name};;;\nFN:${name}\nitem1.TEL;waid=${i.split('@')[0]}:${i.split('@')[0]}\nitem1.X-ABLabel:Yasiru\nEND:VCARD`
     })
   }
   await conn.sendMessage(m.chat, {
