@@ -1,6 +1,6 @@
 let fs = require('fs')
 let path = require('path')
-const thumb = fs.readFileSync('./src/thumb.jpeg')
+const thumb = fs.readFileSync('./src/thumb.jpg')
 let MenuMessege = `
              
 ╔┓┏╦━━╦┓╔┓╔━━╗╔╗
