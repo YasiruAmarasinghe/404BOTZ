@@ -29,7 +29,7 @@ Click below button all menu to get command list`
         }
     }
 }
-await send3ButtonImg(m.chat, thumb, `Hi! I am 404Bot\n\n`, MenuMessege, 'All menu', '.all', 'Developer', '.dev', 'Owner', '.owner', reply) 
+await conn.send3ButtonImg(m.chat, thumb, `Hi! I am 404Bot\n\n`, MenuMessege, 'All menu', '.all', 'Developer', '.dev', 'Owner', '.owner', reply) 
 catch (e) {
     conn.reply(m.chat, 'Soory, menu seding error', m)
     throw e
