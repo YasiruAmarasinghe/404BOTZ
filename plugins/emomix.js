@@ -12,7 +12,7 @@ if (!args[0]) throw 'EXAMPLE:\n\n*.emomix 🐷.😣* or *.emojimix 🤡&👽* '
                 quoted: m
               })
             })
-		    
+	}	    
 handler.help = ['emojimix','emomix'].map(v => v + ' emot1|emot2>')
 handler.tags = ['sticker']
 handler.command = /^(emojimix|emomix)$/i
