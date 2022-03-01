@@ -4,7 +4,7 @@ const { servers, yt } = require('../lib/y2mate')
 
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
 let fs = require('fs')
-let y = fs.readFileSync('./src/404.jpg')
+let y = fs.readFileSync('./src/thumb.jpg')
   if (!args || !args[0]) throw 'Uhm... where url?'
   let chat = global.db.data.chats[m.chat]
   let quality = args[1] || '360'
@@ -20,7 +20,7 @@ let _thumb = {}
  © ${conn.user.name}
 `.trim(), m, false, {
   
-ptt: false, duration: 999999999999, thumbnail: y , asDocument: chat.useDocument})
+ptt: false, thumbnail: y , asDocument: chat.useDocument})
 }
 handler.command = /^dlvid$/i
 handler.owner = false
