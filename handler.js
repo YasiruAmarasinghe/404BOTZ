@@ -402,7 +402,7 @@ async participantsUpdate({ jid, participants, action }) {
             } finally {
               text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace(/@subject/g, this.getName(jid)).replace(/@desc/g, groupMetadata.desc) :
                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace(/@user/g, '@' + user.split('@')[0])
-              let img = `https://api.popcat.xyz/welcomecard?background=${bg}&text1=${encodeURIComponent(this.getName(user))}&text2=${action === 'add' ? `Welcome to ${this.getName(jid)}` : `Sayonara ${this.getName(user)}`}&text3=${time}&avatar=${pp}`
+              let img = `https://api.popcat.xyz/welcomecard?background=${bg}&text1=${encodeURIComponent(this.getName(user))}&text2=${action === 'add' ? `Welcome to ${this.getName(jid)}` : `Good bye ${this.getName(user)}`}&text3=${time}&avatar=${pp}`
                this.sendMessage(jid, text , 'conversation', {quoted: null, thumbnail: global.thumb, contextInfo: {
                   mentionedJid: [user], externalAdReply: {title: 'Welcome Message', body: `© ${this.user.name}`, sourceUrl: '', thumbnail: await (await fetch(pp)).buffer()}
                 }
