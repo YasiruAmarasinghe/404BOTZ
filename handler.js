@@ -410,6 +410,20 @@ async participantsUpdate({ jid, participants, action }) {
             }
           }
         }
+    break
+      case 'promote':
+        text = (chat.sPromote || this.spromote || conn.spromote || '@user ```is now Admin```')
+      case 'demote':
+        if (!text) text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ```is no longer Admin```')
+        text = text.replace('@user', '@' + participants[0].split('@')[0])
+        if (chat.detect) this.sendMessage(jid, text, MessageType.extendedText, {
+          contextInfo: {
+            mentionedJid: this.parseMention(text)
+          }
+        })
+        break
+    }
+  },
   async delete(m) {
     let chat = global.db.data.chats[m.key.remoteJid]
     if (chat.delete) return
