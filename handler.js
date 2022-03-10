@@ -410,7 +410,6 @@ async participantsUpdate({ jid, participants, action }) {
             }
           }
         }
-  },
   async delete(m) {
     let chat = global.db.data.chats[m.key.remoteJid]
     if (chat.delete) return
