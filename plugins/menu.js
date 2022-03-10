@@ -46,7 +46,7 @@ const defaultMenu = {
 ╰────────────────
 %readmore`.trimStart(),
   header: '╭─✚「 %category 」',
-  body: '├✤ %cmd %islimit %isPremium',
+  body: '├• %cmd %islimit %isPremium',
   footer: '╰────\n',
   after: `
 *%npmname@^%version*
@@ -151,12 +151,11 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     let pp = await conn.getProfilePicture(conn.user.jid).catch(_ => path.join(__dirname, '../src/thumb.jpg'))
     conn.sendButton(m.chat,text.trim(), author,  pp,  [
-  ['Ping',  '/ping'],
-  ['Info',  '/info'],
-  ['Owner',  '/owner']
+  ['Owner',  '.owner'],  ['Developer💝',  '.dev'],
+            ['Rules📣',  '.rules']
 ], { quoted: m}).catch(_ => conn.sendFile(m.chat, pp, 'menu.jpg', text.trim(), m)).catch(_ => conn.reply(m.chat, text.trim(), m))
   } catch (e) {
-    conn.reply(m.chat, 'Maaf, menu sedang Diperbaiki', m)
+    conn.reply(m.chat, 'Soory, menu sending error', m)
     throw e
   }
 }
