@@ -380,37 +380,36 @@ module.exports = {
       }
       if (opts['autoread']) await this.chatRead(m.chat).catch(() => { })
     }
-  },
-  async participantsUpdate({ jid, participants, action }) {
+   },
+async participantsUpdate({ jid, participants, action }) {
     let chat = global.db.data.chats[jid] || {}
+    let groupMetadata = await this.groupMetadata(jid)
+    let groupMembers = groupMetadata.participants || ''
+    let groupName = this.getName(jid)
+    let bg = pickRandom(['https://telegra.ph/file/9ce7b042f88892829b63d.png', 'https://telegra.ph/file/04315347e4bf976da87c1.png', 'https://telegra.ph/file/c7e44f81032d5df389b1a.png', 'https://cdn.discordapp.com/attachments/850808002545319957/859359637106065408/bg.png'])
+    let d = new Date(new Date + 3600000)
+    let time = d.toLocaleTimeString('id', { hour: 'numeric', minute: 'numeric', second: 'numeric' })
     let text = ''
     switch (action) {
-        case 'add':
-        case 'remove':
-          if (chat.welcome) {
-            let groupMetadata = await this.groupMetadata(jid)
-            for (let user of participants) {
-              // let pp = './src/avatar_contact.png'
-              let pp = 'https://telegra.ph/file/fd4230902e75d397d8667.jpg'
-              try {
-                pp = await uploadImage(await (await fetch(await this.getProfilePicture(user))).buffer())
-              } catch (e) {
-              } finally {
-                text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'welcome, @user!').replace('@subject', this.getName(jid)).replace('@desc', groupMetadata.desc) :
-                  (chat.sBye || this.bye || conn.bye || 'See you later, @user!')).replace(/@user/g, '@' + user.split`@`[0])
-                let wel = `https://hardianto-chan.herokuapp.com/api/welcome4?profile=${pp}&name=${encodeURIComponent(this.getName(user))}`
-                let lea = `https://hardianto-chan.herokuapp.com/api/goodbye3?profile=${pp}&name=${encodeURIComponent(this.getName(user))}&bg=https://telegra.ph/file/c996b407dbb9af2308487.jpg&namegb=${encodeURIComponent(this.getName(jid))}&member=${encodeURIComponent(groupMetadata.participants.length)}`
-                this.sendFile(jid, action === 'add' ? wel : lea, 'pp.jpg', text, null, false, {
-                  thumbnail: await (await fetch(action === 'add' ? wel : lea)).buffer(),
-                  contextInfo: {
-                    mentionedJid: [user]
-                  }
-                })
-              }
+      case 'add':
+      case 'remove':
+        if (chat.welcome) {
+          for (let user of participants) {
+            let pp = 'https://telegra.ph/file/fc5e41b96c7a809b150c1.png'
+            try {
+              pp = await uploadImage(await (await fetch(await this.getProfilePicture(user))).buffer())
+            } catch (e) {
+            } finally {
+              text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace(/@subject/g, this.getName(jid)).replace(/@desc/g, groupMetadata.desc) :
+                (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace(/@user/g, '@' + user.split('@')[0])
+              let img = `https://api.popcat.xyz/welcomecard?background=${bg}&text1=${encodeURIComponent(this.getName(user))}&text2=${action === 'add' ? `Welcome to ${this.getName(jid)}` : `Sayonara ${this.getName(user)}`}&text3=${time}&avatar=${pp}`
+               this.sendMessage(jid, text , 'conversation', {quoted: null, thumbnail: global.thumb, contextInfo: {
+                  mentionedJid: [user], externalAdReply: {title: 'Welcome Message', body: `© ${this.user.name}`, sourceUrl: '', thumbnail: await (await fetch(pp)).buffer()}
+                }
+              })
             }
           }
-        break
-    }
+        }
   },
   async delete(m) {
     let chat = global.db.data.chats[m.key.remoteJid]
