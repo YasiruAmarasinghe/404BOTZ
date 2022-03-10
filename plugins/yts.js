@@ -16,8 +16,8 @@ _${v.subCountLabel} (${v.subCount}) Subscriber_
 ${v.videoCount} video
 `.trim()
     }
-  }).filter(v => v).join('\n========================\n')
-  m.reply(teks)
+  }).filter(v => v).join('\n============================\n')
+  m.reply( "404Bot Yt-search" + '\n\n' + teks)
 }
 handler.help = ['', 'earch'].map(v => 'yts' + v + ' <query>')
 handler.tags = ['internet']
