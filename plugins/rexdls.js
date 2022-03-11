@@ -4,7 +4,6 @@ let handler = async (m, { text }) => {
     let response = await fetch(global.API('apisanuwa', '/docs/search/rexdl-search', {
       name: text
     }, 'apikey') )
-if (!response.ok) throw await response.text()
   let json = await response.json()
   if (res.status !== 200) throw json
     let string = json.items.map((mod, index) => {
