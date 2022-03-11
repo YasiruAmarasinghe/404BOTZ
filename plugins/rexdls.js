@@ -8,12 +8,12 @@ let handler = async (m, { text }) => {
   if (res.status !== 200) throw json
     let string = json.result.map((mod, index) => {
         return `
-${1+index}. *${mod.title}*
-_${mod.url}_
-*Description:*\n${mod.desc}
-*To Download:* \`\`\`.mod ${mod.url_download}\`\`\`
+${1+index}. 📂*${mod.title}*
+🖇️ _${mod.url}_
+📃 *Description:*\n${mod.desc}
+📩 *To Download:* \`\`\`.mod ${mod.url_download}\`\`\`
 `.trim()
-    }).join('\n»»————-------------————««\n')
+    }).join('\n\n =============================== \n\n')
     m.reply('*404BOT Rexdl mod apk search* .\n\n' + string)
 }
 handler.help = ['findmod'].map(v => v + '<app name>')
