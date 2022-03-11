@@ -1,10 +1,10 @@
 let fetch = require('node-fetch')
 let handler = async (m, { text }) => {
     if (!text) throw 'Please give App name'
-    let response = await fetch(global.API('apisanuwa', '/docs/search/rexdl-search', {
+    let res = await fetch(global.API('apisanuwa', '/docs/search/rexdl-search', {
       name: text
     }, 'apikey') )
-  let json = await response.json()
+  let json = await res.json()
   if (res.status !== 200) throw json
     let string = json.items.map((mod, index) => {
         return `
