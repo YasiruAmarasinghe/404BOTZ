@@ -119,7 +119,7 @@ module.exports = {
           if (!'backup' in settings) settings.backup = false
           if (!isNumber(settings.backupDB)) settings.backupDB = 0
           if (!'groupOnly' in settings) settings.groupOnly = false
-          if (!'jadibot' in settings) settings.groupOnly = false
+          if (!'jadibot' in settings) settings.jadibot = true
           if (!'nsfw' in settings) settings.nsfw = true
           if (!isNumber(settings.status)) settings.status = 0
         } else global.db.data.settings[this.user.jid] = {
@@ -322,7 +322,7 @@ module.exports = {
             if (e) {
               let text = util.format(e.message ? e.message : e)
               for (let key of Object.values(global.APIKeys))
-                text = text.replace(new RegExp(key, 'g'), 'apikey')
+                text = text.replace(new RegExp(key, 'g'), '#hiddenApikey')
               m.reply(text)
             }
           } finally {
