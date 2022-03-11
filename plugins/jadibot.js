@@ -71,7 +71,7 @@ let handler = async (m, { conn, args, usedPrefix, command, isOwner }) => {
       }, 30000)
     })
     global.conns.push(conn)
-  } else throw 'Cant make bot insidebot! To create bot click link below\n\nhttps://wa.me/' + global.conn.user.jid.split`@`[0] + '?text=.getbot'
+  } else throw 'Cant make bot insidebot! To create bot click link below\n\nhttps://wa.me/' + global.conn.user.jid.split`@`[0] + '?text=.bot'
 }
 handler.help = ['jadibot', 'getbot', 'clonebot', 'getqr']
 handler.tags = ['jadibot']
