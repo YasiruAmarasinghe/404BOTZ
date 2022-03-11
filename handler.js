@@ -1,9 +1,8 @@
 let util = require('util')
 let fetch = require('node-fetch')
 let simple = require('./lib/simple')
-const uploadImage = require('./lib/uploadImage')
-const knights = require('knights-canvas')
 let { MessageType } = require('@adiwajshing/baileys')
+const uploadImage = require('./lib/uploadImage')
 const pickRandom = list => list[Math.floor(Math.random() * list.length)]
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(resolve, ms))
@@ -386,7 +385,7 @@ async participantsUpdate({ jid, participants, action }) {
     let groupMetadata = await this.groupMetadata(jid)
     let groupMembers = groupMetadata.participants || ''
     let groupName = this.getName(jid)
-    let bg = pickRandom(['https://telegra.ph/file/9ce7b042f88892829b63d.png', 'https://telegra.ph/file/04315347e4bf976da87c1.png', 'https://telegra.ph/file/c7e44f81032d5df389b1a.png', 'https://telegra.ph/file/895cb55787953069d54b2.jpg' , 'https://cdn.discordapp.com/attachments/850808002545319957/859359637106065408/bg.png'])
+    let bg = pickRandom(['https://telegra.ph/file/9ce7b042f88892829b63d.png', 'https://telegra.ph/file/04315347e4bf976da87c1.png', 'https://telegra.ph/file/c7e44f81032d5df389b1a.png', 'https://cdn.discordapp.com/attachments/850808002545319957/859359637106065408/bg.png'])
     let d = new Date(new Date + 3600000)
     let time = d.toLocaleTimeString('id', { hour: 'numeric', minute: 'numeric', second: 'numeric' })
     let text = ''
@@ -402,11 +401,8 @@ async participantsUpdate({ jid, participants, action }) {
             } finally {
               text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace(/@subject/g, this.getName(jid)).replace(/@desc/g, groupMetadata.desc) :
                 (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace(/@user/g, '@' + user.split('@')[0])
-              let img = `https://api.popcat.xyz/welcomecard?background=${bg}&text1=${encodeURIComponent(this.getName(user))}&text2=${action === 'add' ? `Welcome to ${this.getName(jid)}` : `Good bye ${this.getName(user)}`}&text3=${time}&avatar=${pp}`
-               this.sendMessage(jid, text , 'conversation', {quoted: null, thumbnail: global.thumbfoto, contextInfo: {
-                  mentionedJid: [user], externalAdReply: {title: 'Welcome Message', body: `© ${this.user.name}`, sourceUrl: '', thumbnail: await (await fetch(pp)).buffer()}
-                }
-              })
+              let img = `https://api.popcat.xyz/welcomecard?background=${bg}&text1=${encodeURIComponent(this.getName(user))}&text2=${action === 'add' ? `Welcome to ${this.getName(jid)}` : `Goodbye ${this.getName(user)}`}&text3=${time}&avatar=${pp}`
+                this.sendButtonLoc(jid, await (await fetch(img)).buffer(), text, global.watermark, action === 'add' ? 'Welcome' : 'Goodbye', global.watermark) 
             }
           }
         }
