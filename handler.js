@@ -130,7 +130,7 @@ module.exports = {
           backup: false,
           backupDB: 0,
           groupOnly: false,
-          jadibot: false,
+          jadibot: true,
           nsfw: true,
           status: 0,
         }
