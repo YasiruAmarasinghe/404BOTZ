@@ -3,7 +3,7 @@ let handler = async (m, { text }) => {
     if (!text) throw 'Please give App name'
     let response = await fetch(global.API('apisanuwa', '/docs/search/rexdl-search', {
       name: text
-    }))
+    }), 'APIKEY' )
 if (!response.ok) throw await response.text()
   let json = await response.json()
   if (res.status !== 200) throw json
