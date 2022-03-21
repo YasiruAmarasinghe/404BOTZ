@@ -8,7 +8,7 @@ let handler = async (m, { text }) => {
   if (res.status !== 200) throw json
     let string = json.result.map((mod, index) => {
         return `
-${1+index}. 📂*${mod.title}*
+${1+index}. 📂 *${mod.title}*
 🖇️ _${mod.url}_
 📃 *Description:*\n${mod.desc}
 📩 *To Download:* \`\`\`.mod ${mod.url_download}\`\`\`
