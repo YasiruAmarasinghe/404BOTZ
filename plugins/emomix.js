@@ -1,7 +1,7 @@
 let fetch = require('node-fetch')
 let {fetchJson} = require("../lib/myfunc")
 let fs = require("fs")
-
+let sticker = require("../lib/sticker")
 let handler = async (m, { conn, text, args }) => {
 if (!args[0]) throw 'EXAMPLE:\n\n*.emomix 🐷.😣* or *.emojimix 🤡&👽* '
    	let [emoji1, emoji2] = text.split`&`
