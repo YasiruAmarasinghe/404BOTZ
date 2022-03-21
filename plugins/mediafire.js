@@ -1,13 +1,12 @@
-let fetch = require('node-fetch')
 
-let handler = async (m, { conn, args }) => {
- if (!args[0]) throw 'Uhm.. please give a URL?'
- let res = await fetch(API('apisanuwa', '/docs/download/mediafire', { url: args[0] }, 'apikey'))
- if (!res.ok) throw await res.text()
- let json = await res.json()
- let { nama, link } = json.result
- m.reply(JSON.stringify(json.result, null, 2))
- conn.sendFile(m.chat, link, nama, '', m)
+let axios = require("axios");
+let handler = async(m, { conn, text }) => {
+
+    if (!text) return conn.reply(m.chat, 'where command ', m)
+
+	axios.get(`https://sanuw-api.herokuapp.com/docs/download/mediafire?url=${text}&apikey=sanuwa`).then ((res) => { 
+ conn.sendFile(m.chat, res.result.link, res.result.nama + 'res.result.mime' m)
+	})
 }
 handler.help = ['mediafire'].map(v => v + ' <url>')
 handler.tags = ['downloader']
