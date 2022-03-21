@@ -5,9 +5,9 @@ let handler = async (m, { conn, args }) => {
  let res = await fetch(API('apisanuwa', '/docs/download/mediafire', { url: args[0] }, 'apikey'))
  if (!res.ok) throw await res.text()
  let json = await res.json()
- let { title, link } = json.result
+ let { nama, link } = json.result
  m.reply(JSON.stringify(json.result, null, 2))
- conn.sendFile(m.chat, link, title, '', m)
+ conn.sendFile(m.chat, link, nama, '', m)
 }
 handler.help = ['mediafire'].map(v => v + ' <url>')
 handler.tags = ['downloader']
