@@ -14,4 +14,3 @@ handler.tags = ['downloader']
 handler.command = /^mod$/i
 
 module.exports = handler
-,
