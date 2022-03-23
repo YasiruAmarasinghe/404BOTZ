@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, text }) => {
  let json = await res.json()
  let { link_name, url } = json.download
  
-  await conn.sendFile(m.chat, url, link_name, null, m)
+  await conn.sendFile(m.chat, url, link_name, '.apk', m)
 }
 handler.help = ['mod'].map(v => v + ' <url>')
 handler.tags = ['downloader']
