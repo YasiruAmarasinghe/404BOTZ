@@ -5,7 +5,7 @@ let handler = async (m, { conn, args, text }) => {
  let res = await fetch(API('apisanuwa', '/docs/download/mediafire', { url: args[0] }, 'apikey'))
  if (!res.ok) throw await res.text()
  let json = await res.json()
- let { nama, link } = json.download
+ let { nama, link } = json.result
  m.reply('nama')
   await conn.sendFile(m.chat, link, nama, '', m)
 }
