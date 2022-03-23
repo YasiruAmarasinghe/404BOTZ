@@ -5,9 +5,9 @@ let handler = async (m, { conn, args, text }) => {
  let res = await fetch(API('apisanuwa', '/docs/download/rexdl', { url: args[0] }, 'apikey'))
  if (!res.ok) throw await res.text()
  let json = await res.json()
- let { title, url } = json.result
+ let { link_name, url } = json.result
  
-  await conn.sendFile(m.chat, url, title, null, m)
+  await conn.sendFile(m.chat, url, link_name, null, m)
 }
 handler.help = ['mod'].map(v => v + ' <url>')
 handler.tags = ['downloader']
