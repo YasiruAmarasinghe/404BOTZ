@@ -385,7 +385,7 @@ async participantsUpdate({ jid, participants, action }) {
     let groupMetadata = await this.groupMetadata(jid)
     let groupMembers = groupMetadata.participants || ''
     let groupName = this.getName(jid)
-    let bg = pickRandom(['https://telegra.ph/file/9ce7b042f88892829b63d.png', 'https://telegra.ph/file/04315347e4bf976da87c1.png', 'https://telegra.ph/file/c7e44f81032d5df389b1a.png', 'https://cdn.discordapp.com/attachments/850808002545319957/859359637106065408/bg.png'])
+    let bg = pickRandom(['https://telegra.ph/file/b44d861f59b8811cf07a6.png', 'https://telegra.ph/file/51b0a33fdc4e084855e77.png', 'https://telegra.ph/file/585b967105e12d50d60ff.png', 'https://telegra.ph/file/cad7038fe82e47f79c609.jpg'])
     let d = new Date(new Date + 3600000)
     let time = d.toLocaleTimeString('id', { hour: 'numeric', minute: 'numeric', second: 'numeric' })
     let text = ''
