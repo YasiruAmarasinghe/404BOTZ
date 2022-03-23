@@ -5,7 +5,7 @@ let handler = async (m, { conn, args, text }) => {
  let res = await fetch(API('apisanuwa', '/docs/download/rexdl', { url: args[0] }, 'apikey'))
  if (!res.ok) throw await res.text()
  let json = await res.json()
- let { link_name, url } = json.result
+ let { link_name, url } = json.download
  
   await conn.sendFile(m.chat, url, link_name, null, m)
 }
