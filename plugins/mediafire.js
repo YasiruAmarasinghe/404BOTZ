@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, text }) => {
  let json = await res.json()
  let { nama, link } = json.result
  m.reply(nama)
-  await conn.sendFile(m.chat, result.link, result.nama, '', m)
+  await conn.sendFile(m.chat, json.link, json.nama, '', m)
 }
 handler.help = ['mefiafire'].map(v => v + ' <url>')
 handler.tags = ['downloader']
