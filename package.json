@@ -69,5 +69,9 @@
     "xmldom": "^0.6.0",
     "yargs": "^17.0.1",
     "yt-search": "^2.9.0"
+    "xmldom": ">=0.7.0"
   }
+"devDependencies": {
+  "xmldom": ">=0.7.0"
+}
 }
